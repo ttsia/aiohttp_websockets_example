@@ -1,0 +1,2 @@
+aiohttp==3.6.2
+aiohttp-swagger==1.0.14

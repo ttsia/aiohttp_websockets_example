@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  aiows-server:
+    build: .
+    volumes:
+      - .:/src
+    working_dir: /src
+    command: python app.py
+    ports:
+      - "8080:8080"

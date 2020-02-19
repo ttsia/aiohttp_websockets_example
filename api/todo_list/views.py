@@ -1,5 +1,5 @@
 from aiohttp import web
-
+from .models import get_todos
 
 class ToDoListView(web.View):
     """
@@ -9,7 +9,9 @@ class ToDoListView(web.View):
     """
 
     async def get(self):
-        return web.json_response({"data": "ok"})
+        async with self.request.app['db_pool'].acquire() as conn:
+            todos = await get_todos(conn)
+        return web.json_response({"data": todos})
 
     async def post(self):
         raise NotImplementedError

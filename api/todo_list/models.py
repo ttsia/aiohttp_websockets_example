@@ -14,8 +14,7 @@ todos = Table(
 
 
 async def get_todos(conn):
-    records = await conn.fetch(todos.select().order_by(todos.c.id))
-    return records
+    return await conn.fetch(todos.select().order_by(todos.c.id))
 
 
 async def create_todo(conn, text):

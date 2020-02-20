@@ -24,4 +24,4 @@ class ToDoListView(web.View):
         """
         async with self.request.app["db_pool"].acquire() as conn:
             await create_todo(conn, "test")
-        return web.Response(text="OK")
+        return web.json_response({"data": "ok"})

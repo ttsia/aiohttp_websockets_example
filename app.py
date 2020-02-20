@@ -12,10 +12,11 @@ from db import init_db
 async def init_app():
     app = web.Application()
     app["config"] = CONFIG
-    app.add_routes(routes)
-    setup_swagger(app)
 
     await init_db(app)
+    app.add_routes(routes)
+
+    setup_swagger(app)
 
     return app
 
